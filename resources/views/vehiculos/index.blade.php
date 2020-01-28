@@ -12,9 +12,11 @@
                         </span>
                     </div>
                     <div class="col-7">
+                    <a href="{{ url('vehiculos/create') }}">
                         <button type="submit"  class="btn btn-success float-right">
                             <i class="fa fa-plus-circle"></i> Agregar
                         </button>
+                    </a>
                     </div>
                 </div>
             </div>

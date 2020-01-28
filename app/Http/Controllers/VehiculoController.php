@@ -49,7 +49,7 @@ class VehiculoController extends Controller
         $car->fotos = $request->input('fotos');
         $car->save(); 
 
-        return 'Se guardo el auto con placa'.$car->numero_chasis.' correctamente';
+        return view('vehiculos.index',compact('cars'));
     }
 
     /**

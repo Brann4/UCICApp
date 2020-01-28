@@ -96,12 +96,12 @@
                             <label for="fotos">Fotos:</label>
                             <input type="file" class="form-control-file" name="fotos"></input>
                         </div>
-                    </div>
-                    
-                    <button type="submit" href="" class="btn btn-success">Agregar</button>
-                    <button type="submit" href="" class="btn btn-danger">Cancelar</button>
-                    
+                    </div> 
+                    <button type="submit" class="btn btn-success">Guardar</button>    
                 </form>
+                    <a href="{{ route('vehiculos.index') }}">
+                        <button type="submit" class="btn btn-danger">Cancelar</button>
+                    </a>
                 </div>
 
             </div> 
