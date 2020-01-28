@@ -15,9 +15,8 @@
             <div class="card-body">
 
             <div class="col-auto order-md-1">
-                <form class="form-group" method="POST" action="/vehiculos">
+                <form class="form-group" method="POST" action="{{ action('VehiculoController@store') }}">
                     @csrf
-
                     <div class="row">
                         <div class="col-md-4 mb-3">
                         <label for="empresa">Empresa</label>
@@ -105,5 +104,5 @@
                 </div>
 
             </div> 
-        </div>
+        </div> 
 @endsection

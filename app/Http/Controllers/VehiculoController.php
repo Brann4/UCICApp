@@ -14,9 +14,8 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-        $cars = Vehiculo::all();
-    
-        return view('vehiculos.index', compact('cars'));
+       $cars = Vehiculo::all();
+        return view('/vehiculos.index',compact('cars'));
     }
 
     /**
@@ -37,6 +36,19 @@ class VehiculoController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'empresa' => 'required',
+            'marca' => 'required',
+            'modelo' => 'required',
+            'codigo_vehiculo' => 'required',
+            'numero_chasis' => 'required',
+            'anio' => 'required',
+            'codigo_motor' => 'required',
+            'precio' => 'required',
+            'fotos'=>'required',
+        ]);
+
+
         $car = new Vehiculo();
         $car->empresa = $request->input('empresa');
         $car->marca= $request->input('marca');
@@ -47,9 +59,10 @@ class VehiculoController extends Controller
         $car->codigo_motor = $request->input('codigo_motor');
         $car->precio = $request->input('precio');
         $car->fotos = $request->input('fotos');
+
         $car->save(); 
 
-        return view('vehiculos.index',compact('cars'));
+        return redirect(route('vehiculos.index'))->with('guardado','Vehiculo aguardado correctamente');
     }
 
     /**
