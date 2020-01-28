@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/cliente','ClienteController'); 
 
-Route::get('/cliente/create','ClienteController@create');
+Auth::routes();
+
+Route::resource('/vehiculos','VehiculoController')->middleware('auth'); 
+
+Route::get('/vehiculos/create','VehiculoController@create')->middleware('auth');
+
+Route::get('/home', 'HomeController@index')->name('home');
