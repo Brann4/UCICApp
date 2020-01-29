@@ -12,7 +12,7 @@
 						<h4 class="modal-title">Agregar Vehículo</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-                    <form class="form-group"  action="{{ action('VehiculoController@store') }}" method="POST">
+                    <form class="form-group"  action="{{ action('VehiculoController@store') }}" method="POST" enctype="multipart/form-data" >
                         @csrf
                     <div class="modal-body">
                         <div class="form-group row">
@@ -94,7 +94,7 @@
 
                         <div class="form-group row">
                             <div class="col-md-6 mt-2 ">
-                                <label for="fotos">Fotos:</label>
+                                <label for="fotos">Imagenes:</label>
                                 <input type="file" class="form-control-file" name="fotos"></input>
                             </div>
                         </div> 
@@ -139,16 +139,37 @@
 					</div>
                 </div>
             </div>
+            
+            <hr>
+            <!-- Cards Columns-->
 
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="card-columns mt-10">
+            @foreach($cars as $car)
+                <div class="card">
+                <img src="{{ asset('uploads/cars/'.$car->fotos) }}" alt="{{ $car->modelo }}"
+                                width="100%" height="100%" >
+                    <div class="card-body">
+                    <h5 class="card-title">{{  $car->marca }}</h5>
+                    <p class="card-text">
+                        <ul>
+                            <li>{{ $car->modelo }}</li>
+                            <li>{{ 'Año del auto: '.$car->anio}}</li>
+                            <li>{{ '$ '.$car->precio }}</li>
+                        </ul> 
+                    </p>
+                    <p class="card-text"><small class="text-muted">{{ "Subido el: ".$car->created_at }}</small></p>
+                    </div>
                 </div>
+            @endforeach
             </div>
 
+ 
+
+</div>
+            <!-- End Cards Columns-->
+
+            <hr>
+            <!--
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -159,6 +180,7 @@
                         <th>Modelo</th>
                         <th>Año</th>
                         <th>Precio</th>
+                        <th>Foto</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -170,6 +192,10 @@
                         <td>{{  $car->marca }}</td>
                         <td>{{ $car->modelo }}</td>
                         <td>{{ $car->anio }}</td>
+                        <td>
+                            <img src="{{ asset('uploads/cars/'.$car->fotos) }}" alt="{{ $car->modelo }}"
+                                width="100x" height="100px" > 
+                        </td>
                         <td>{{ '$ '.$car->precio }}</td>
                         <td>
                             <a href="#editEmployeeModal" class="edit" data-toggle="modal">
@@ -187,6 +213,7 @@
                 @endforeach
                 </tbody>
             </table>
+            -->
         </div>
     </div>
 

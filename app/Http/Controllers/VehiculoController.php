@@ -58,15 +58,23 @@ class VehiculoController extends Controller
         $car->anio = $request->input('anio');
         $car->codigo_motor = $request->input('codigo_motor');
         $car->precio = $request->input('precio');
-        $car->fotos = $request->input('fotos');
 
-        /*if($request->hasfile('fotos')){
-            $files = $request->file('fotos')
-        }*/
+        if($request->hasfile('fotos')){
+            $file = $request->file('fotos');
+            $extension = $file->getClientOriginalExtension();
+
+            $filename = time().'.'.$extension;
+            $file->move('uploads/cars/',$filename);
+            $car->fotos = $filename;
+        }
+        else{
+            return $request;
+            $car->fotos='';
+        }
 
         $car->save(); 
 
-        return redirect(route('vehiculos.index'))->with('guardado','Vehiculo guardado correctamente');
+        return redirect(route('vehiculos.index'))->with('vehiculos',$car);
     }
 
     /**

@@ -23,3 +23,4 @@ Route::resource('/vehiculos','VehiculoController')->middleware('auth');
 Route::get('/vehiculos/create','VehiculoController@create')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
