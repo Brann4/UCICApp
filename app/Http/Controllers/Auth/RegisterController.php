@@ -56,7 +56,8 @@ class RegisterController extends Controller
             'city' =>['required','string',],
             'address' =>['required','string'],
             'frontdni' =>['required','string'],
-            'backdni' =>['required','string' ]
+            'backdni' =>['required','string' ],
+            'estado' => ['boolean'],
         ]);
     }
 
@@ -77,6 +78,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'frontdni' => $data ['frontdni'],
             'backdni' => $data['backdni'],
+            'estado' => $data['estado'],
         ]);
     }
 }

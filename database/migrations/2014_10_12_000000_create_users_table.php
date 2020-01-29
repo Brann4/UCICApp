@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('address');
             $table->string('frontdni');
             $table->string('backdni');
+            $table->boolean('estado')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

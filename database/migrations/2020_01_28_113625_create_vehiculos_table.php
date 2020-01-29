@@ -23,7 +23,7 @@ class CreateVehiculosTable extends Migration
             $table->bigInteger('anio');
             $table->string('codigo_motor');
             $table->decimal('precio',8,2);
-            $table->string('fotos');
+            $table->mediumText('fotos')->nullable();
             $table->timestamps();
         });
     }

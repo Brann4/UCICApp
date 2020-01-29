@@ -60,9 +60,13 @@ class VehiculoController extends Controller
         $car->precio = $request->input('precio');
         $car->fotos = $request->input('fotos');
 
+        /*if($request->hasfile('fotos')){
+            $files = $request->file('fotos')
+        }*/
+
         $car->save(); 
 
-        return redirect(route('vehiculos.index'))->with('guardado','Vehiculo aguardado correctamente');
+        return redirect(route('vehiculos.index'))->with('guardado','Vehiculo guardado correctamente');
     }
 
     /**
